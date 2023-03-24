@@ -289,7 +289,7 @@ except FileNotFoundError as error:
 
 
 async def main(MISCALE_MAC):
-#    stop_event = asyncio.Event()
+    stop_event = asyncio.Event()
 
     # TODO: add something that calls stop_event.set()
 
@@ -350,7 +350,7 @@ async def main(MISCALE_MAC):
             logging.info(f"Found device with MAC address: {device.address}")
         else:
             logging.info("Device not found")            
-            
+        await stop_event.wait()    
         
 if __name__ == "__main__":
     if MQTT_DISCOVERY:

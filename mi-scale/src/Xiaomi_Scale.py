@@ -294,6 +294,11 @@ async def main(MISCALE_MAC):
     # TODO: add something that calls stop_event.set()
 
     def callback(device, advertising_data):
+        if device is not None:
+            logging.info(f"Found device with MAC address: {device.address}")
+        else:
+            logging.info("Device not found")         
+       # device = await scanner.find_device_by_address(MISCALE_MAC)
         global OLD_MEASURE
         if device.address.lower() == MISCALE_MAC:
             logging.debug(f"miscale found, with advertising_data: {advertising_data}")
@@ -337,14 +342,16 @@ async def main(MISCALE_MAC):
                 pass
         pass
 
-    async with BleakScanner(
-        callback
-    ) as scanner:
-        ...
-        # Important! Wait for an event to trigger stop, otherwise scanner
-        # will stop immediately.
-        await stop_event.wait()
-
+    async def run(mac_address, timeout):
+        scanner = BleakScanner()
+        stop_event = asyncio.Event()
+        device = await scanner.find_device_by_address(MISCALE_MAC)
+        scanner = BleakScanner(on_device_found=callback)
+if device is not None:
+    logging.info(f"Found device with MAC address: {device.address}")
+else:
+    logging.info("Device not found")            
+            
         
 if __name__ == "__main__":
     if MQTT_DISCOVERY:

@@ -1,7 +1,7 @@
 {
   "name": "Mi Scale",
   "version": "0.3.6",
-  "slug": "mi_scale",
+  "slug": "mi-scale",
   "description": "Read weight measurements from a Xiaomi bathroom scale via Bluetooth (BLE)",
   "url": "https://github.com/schlambambi/hassio-addons/tree/master/mi-scale",
   "image": "hassio-addons/tree/master/mi-scale",

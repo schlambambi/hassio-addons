@@ -289,7 +289,7 @@ except FileNotFoundError as error:
 
 
 async def main(MISCALE_MAC):
-    stop_event = asyncio.Event()
+#    stop_event = asyncio.Event()
 
     # TODO: add something that calls stop_event.set()
 
@@ -342,15 +342,14 @@ async def main(MISCALE_MAC):
                 pass
         pass
 
-    async def run(mac_address, timeout):
         scanner = BleakScanner()
-        stop_event = asyncio.Event()
+#       stop_event = asyncio.Event()
         device = await scanner.find_device_by_address(device_identifier:MISCALE_MAC, on_device_found=callback)
-        scanner = BleakScanner(on_device_found=callback)
-if device is not None:
-    logging.info(f"Found device with MAC address: {device.address}")
-else:
-    logging.info("Device not found")            
+#       scanner = BleakScanner(on_device_found=callback)
+        if device is not None:
+            logging.info(f"Found device with MAC address: {device.address}")
+        else:
+            logging.info("Device not found")            
             
         
 if __name__ == "__main__":

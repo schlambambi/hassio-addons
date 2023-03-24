@@ -360,7 +360,8 @@ if __name__ == "__main__":
     logging.info(f"-------------------------------------")
     logging.info(f"Initialization completed, step on scale to wake it up and get a weight value sent... Make sure the scale is within reach...")
     try:
-        asyncio.run(main(MISCALE_MAC.lower()))
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(main(MISCALE_MAC))
     except Exception as error:
         logging.error(f"Unable to connect to Bluetooth: {error}")
         pass

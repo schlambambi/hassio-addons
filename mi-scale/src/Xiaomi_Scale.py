@@ -240,13 +240,13 @@ try:
                 logging.warning(f"MQTT Discovery enabled but no MQTT Prefix provided, defaulting to 'homeassistant'...")
                 MQTT_DISCOVERY_PREFIX = "homeassistant"
             pass
-        try:
-            HCI_DEV = data["HCI_DEV"].lower()
-            logging.debug(f"HCI_DEV read from config: {HCI_DEV}")
-        except:
-            HCI_DEV = "hci0"
-            logging.debug(f"HCI_DEV defaulted to: {HCI_DEV}")
-            pass
+#        try:
+#            HCI_DEV = data["HCI_DEV"].lower()
+#            logging.debug(f"HCI_DEV read from config: {HCI_DEV}")
+#        except:
+#            HCI_DEV = "hci0"
+#            logging.debug(f"HCI_DEV defaulted to: {HCI_DEV}")
+#            pass
         try:
             BLUEPY_PASSIVE_SCAN = data["BLUEPY_PASSIVE_SCAN"]
             logging.debug(f"BLUEPY_PASSIVE_SCAN read from config: {BLUEPY_PASSIVE_SCAN}")

@@ -273,7 +273,7 @@ try:
                 raise
         OLD_MEASURE = None
         logging.info(f"Config Loaded...")
-
+        logging.info("Test")
 # Failed to open options.json
 except FileNotFoundError as error:
     DEBUG_LEVEL = DEFAULT_DEBUG_LEVEL
@@ -292,13 +292,15 @@ async def main(MISCALE_MAC):
     stop_event = asyncio.Event()
 
     # TODO: add something that calls stop_event.set()
-
+    logging.info("Hier")
     def callback(device, advertising_data):
         if device is not None:
             logging.info(f"Found device with MAC address11: {device.address}")
         else:
             logging.info("Device not found11")         
-       # device = await scanner.find_device_by_address(MISCALE_MAC)
+        logging.info("Hier1") 
+        device = await scanner.find_device_by_address(MISCALE_MAC)
+        logging.info("Hier2")
         global OLD_MEASURE
         if device.address.lower() == MISCALE_MAC:
             logging.debug(f"miscale found, with advertising_data: {advertising_data}")
@@ -341,10 +343,10 @@ async def main(MISCALE_MAC):
             except:
                 pass
         pass
-
-        scanner = BleakScanner()
+        device = await scanner.find_device_by_address(MISCALE_MAC)
+#        scanner = BleakScanner()
 #       stop_event = asyncio.Event()
-        device = await scanner.find_device_by_address(device_identifier:MISCALE_MAC, on_device_found=callback)
+#        device = await scanner.find_device_by_address(device_identifier:MISCALE_MAC, on_device_found=callback)
 #       scanner = BleakScanner(on_device_found=callback)
         if device is not None:
             logging.info(f"Found device with MAC address: {device.address}")
